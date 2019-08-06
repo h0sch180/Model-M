@@ -1,21 +1,28 @@
 //measures are in millimeters
+// Support not needed
+// 210°   hotend
+// 70°    bed
+// 0.1    resolution
+// 20mm/s speed
+// 100%   infill
+// Geeetech PLA
 AY=18.5;
 AX=19.0;
 BY=12.5;
 BLX=14.5;
 EZ=11.0;
 FLZ=14.0;
-H=12.75;
+H=13.75;    //we need 1mm more
 CYL_OFF_Z=50;
 CYL_DEPTH=0.1;
 CLIP_X=2;
 CLIP_Y=0.75;
 CLIP_H=3*CLIP_Y;
-CORNER_RADIUS=2;
+CORNER_RADIUS=0;    // we don't want 
 
-WallThickness=0.75;
+WallThickness=1.00;
 ClipWidth=2.2;
-ClipDepth=0.75;
+ClipDepth=1.0;
 
 //ascfront=FLZ/sqrt(pow(FLZ,2)-pow(H,2));
 //asctop=(H-EZ)/sqrt(pow(BLX,2)-pow((H-EZ),2));
@@ -36,8 +43,8 @@ module keycap(){
 			translate([0,AY/2,EZ+CYL_OFF_Z]) rotate(a=90-alpha,v=[0,1,0]) cylinder(h=100,center=true,r=CYL_OFF_Z+CYL_DEPTH,$fa=1);
 			translate([AX,0,0]) rotate(a=beta-90,v=[0,1,0]) cube([100,100,100]);
 		}
-		cylinder(h=0.01,r=CORNER_RADIUS,$fs=0.6);
-		//rotate(a=90,v=[1,0,0]) cylinder(h=0.01,r=1,$fs=0.3);
+		cylinder(h=0.10,r=CORNER_RADIUS,$fs=0.6);
+		//rotate(a=90,v=[1,0,0]) cylinder(h=0.01,r=1,$fs=0.6);
 	}
 }
 
